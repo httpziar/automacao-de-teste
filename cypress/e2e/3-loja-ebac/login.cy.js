@@ -1,5 +1,5 @@
 ///<reference types="cypress"/>
-context perfil = require ('..//..//fixtures/perfil.json')
+const perfil = require('../../fixtures/perfil.json')
 describe('Funcionalidade: Login', () => {
     beforeEach(() => {
         cy.visit ('minha-conta')
@@ -32,11 +32,10 @@ describe('Funcionalidade: Login', () => {
         cy.get('.woocommerce-form > .button').click()
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should ( 'contain' , 'Olá, elisiarqa (não é elisiarqa? Sair)' )
         
-    })
     });
 it.only('Deve fazer login com sucesso usando comando customizados', () => {
     cy.login ('elisiarQA@teste.com.br', 'CGHXjcr2qmHjyLe')
     cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should ( 'contain' , 'Olá, elisiarqa (não é elisiarqa? Sair)' )
 
 });
-
+});

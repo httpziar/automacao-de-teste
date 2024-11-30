@@ -12,6 +12,6 @@ Cypress.Commands.add('preCadastro', (email, senha, nome, sobrenome) => {
         cy.get('.woocommerce-MyAccount-content > :nth-child(3)').should('exist')
         cy.get('.woocommerce-MyAccount-navigation-link--edit-account > a').click()
         cy.get('#account_first_name').type(nome)
-        cy.get('#account_last_name').type(Sobrenome)
+        cy.get('#account_last_name').type(sobrenome)
         cy.get('.woocommerce-Button').click() 
 })
