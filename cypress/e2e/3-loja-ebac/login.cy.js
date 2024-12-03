@@ -33,9 +33,17 @@ describe('Funcionalidade: Login', () => {
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should ( 'contain' , 'Olá, elisiarqa (não é elisiarqa? Sair)' )
         
     });
-it.only('Deve fazer login com sucesso usando comando customizados', () => {
+it('Deve fazer login com sucesso usando comando customizados', () => {
     cy.login ('elisiarQA@teste.com.br', 'CGHXjcr2qmHjyLe')
     cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should ( 'contain' , 'Olá, elisiarqa (não é elisiarqa? Sair)' )
 
+});
+it.only('Deve fazer login com sucesso - Usabdo fixture', () => {
+  cy.fixture ('perfil').then( dados => {
+    cy.get('#username').type(dados.usuario)
+        cy.get('#password').type(dados.senha , { log: false})
+        cy.get('.woocommerce-form > .button').click()
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should ( 'contain' , 'Olá, elisiarqa (não é elisiarqa? Sair)' )
+  }) 
 });
 });
