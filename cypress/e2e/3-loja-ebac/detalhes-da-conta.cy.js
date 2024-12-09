@@ -1,8 +1,15 @@
-/// <reference types= "cypress" />
+/// <reference types="cypress" />
 describe('Funcionalidade: Detalhes da conta',  () => {
+    
     beforeEach(() => {
-       cy.visit('minha-conta/edit-account/')
-       cy.login('elisiarQA@teste.com.br', 'CGHXjcr2qmHjyLe' )
+    cy.visit ('minha-conta/edit-account')
+    cy.fixture('perfil').then (login => {
+    cy.login(login.usuario, login.senha)  
+    })
     });
-    it('Deve completar detalhes da conta com sucesso')
+    it('Deve completar detalhes da conta com sucesso', () => {
+cy.detalhesConta('Elisiar', 'Soares', 'ElisiarQA')
+cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.' )
+ });
 });
+
